@@ -90,7 +90,7 @@ public class RecyclerViewStudyOptionsSederAdapter extends RecyclerView.Adapter<R
         private void openMasechtotRecyclerView() {
             mRvLinearLayout.setVisibility(View.VISIBLE);
             mMasechtotRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-            RecyclerViewStudyOptionsMasechetAdapter mRecyclerViewStudyOptionsMasechetAdapter = new RecyclerViewStudyOptionsMasechetAdapter(seder.getMasechtot(), listenerCreateTypeOfStudy);
+            RecyclerViewStudyOptionsMasechetAdapter mRecyclerViewStudyOptionsMasechetAdapter = new RecyclerViewStudyOptionsMasechetAdapter(mContext, seder.getMasechtot(), listenerCreateTypeOfStudy);
             mMasechtotRecyclerView.setAdapter(mRecyclerViewStudyOptionsMasechetAdapter);
         }
     }
