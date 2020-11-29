@@ -100,6 +100,7 @@ public class DeleteStudyFragment extends Fragment {
                     break;
             }
             startActivity(new Intent(getActivity(), SplashActivity.class));
+            Objects.requireNonNull(getActivity()).finish();
         });
     }
 

@@ -3,6 +3,8 @@ package com.example.myapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,10 +15,12 @@ import com.example.myapp.R;
 import com.example.myapp.dataBase.AppDataBase;
 import com.example.myapp.databinding.ActivityMainBinding;
 import com.example.myapp.fragment.DeleteStudyFragment;
+import com.example.myapp.fragment.NumberOfRepetitionsProfileFragment;
 import com.example.myapp.fragment.ShewStudyRvFragment;
 import com.example.myapp.utils.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.myapp.utils.StaticVariables.index1;
 import static com.example.myapp.utils.StaticVariables.index2;
@@ -127,4 +131,17 @@ public class MainActivity extends AppCompatActivity  {
         ArrayList <Integer> mLeaning = (ArrayList<Integer>) AppDataBase.getInstance(this).daoLearning().getAllIndexTypeOfLeaning();
         return !mLeaning.contains(index1) || !mLeaning.contains(index2) || !mLeaning.contains(index3);
     }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.MA_frameLayout);
+        if (currentFragment instanceof ShewStudyRvFragment){
+            finish();
+        }
+        if (currentFragment instanceof DeleteStudyFragment){
+            fragmentManager.popBackStack();
+        }
+    }
+
 }

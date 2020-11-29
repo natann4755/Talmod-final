@@ -3,6 +3,8 @@ package com.example.myapp.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +16,9 @@ import com.example.model.shas_masechtot.Seder;
 import com.example.myapp.R;
 import com.example.myapp.dataBase.AppDataBase;
 import com.example.myapp.databinding.ActivityProfileBinding;
+import com.example.myapp.fragment.DeleteStudyFragment;
 import com.example.myapp.fragment.NumberOfRepetitionsProfileFragment;
+import com.example.myapp.fragment.ShewStudyRvFragment;
 import com.example.myapp.fragment.TypeStudyProfileFragment;
 import com.example.myapp.utils.ConvertIntToPage;
 import com.example.myapp.utils.Toast;
@@ -140,6 +144,7 @@ public class ProfileActivity extends AppCompatActivity implements TypeStudyProfi
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     dialog.dismiss();
+                    openFragment(TypeStudyProfileFragment.newInstance((ArrayList<Seder>) mAllShas.getSeder()), TypeStudyProfileFragment.TAG);
                     break;
             }
         };
@@ -189,6 +194,17 @@ public class ProfileActivity extends AppCompatActivity implements TypeStudyProfi
     private void updateListWithNumberOfRep(int numberOfRep) {
         for (Daf daf : mListLearning) {
             daf.setWantChazara(numberOfRep);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.frameLayout_profile_FL);
+        if (currentFragment instanceof TypeStudyProfileFragment){
+           finish();
+        }
+        if (currentFragment instanceof NumberOfRepetitionsProfileFragment){
+            fragmentManager.popBackStack(TypeStudyProfileFragment.TAG,0);
         }
     }
 }
