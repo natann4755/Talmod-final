@@ -1,5 +1,6 @@
 package com.example.myapp.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.example.model.Daf;
 import com.example.model.enums.FILTERS;
@@ -41,6 +43,9 @@ public class ShewStudyRvFragment extends Fragment implements AllMasechtotAdapter
     private ArrayList<Daf> myListLearning3 = new ArrayList<>();
     private RecyclerView recyclerViewPage;
     private DafAdapter myAdapter;
+
+
+
 
 
     public static ShewStudyRvFragment newInstance(ArrayList<Daf> myList1, ArrayList<Daf> myList2, ArrayList<Daf> myList3) {
@@ -205,6 +210,19 @@ public class ShewStudyRvFragment extends Fragment implements AllMasechtotAdapter
         binding.showStudySummaryTypeOfLearningTV.setText(nameLearning);
         binding.showStudySummaryLearnedTV.setText(pageLearned);
         binding.showStudySummaryTotalTV.setText(totalLearning);
+    }
+
+    @Override
+    public void showTheDaf(Daf daf, int page) {
+        initWebView();
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private void initWebView() {
+        binding.ShowTheDafWV.setVisibility(View.VISIBLE);
+        binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
+//
+        binding.ShowTheDafWV.loadUrl("https://wiki.sheatufim.org.il/w/uploads/sheatufim/thumb/0/0d/%D7%9B%D7%91%D7%A8_%D7%AA%D7%A8%D7%9E%D7%AA%D7%99.pdf/page1-1200px-%D7%9B%D7%91%D7%A8_%D7%AA%D7%A8%D7%9E%D7%AA%D7%99.pdf.jpg");
     }
 
     @Override

@@ -278,6 +278,8 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1 = itemView.findViewById((R.id.chazara_1_CB));
             chazara2 = itemView.findViewById((R.id.chazara_2_CB));
             chazara3 = itemView.findViewById((R.id.chazara_3_CB));
+            showDafPage1TV = itemView.findViewById((R.id.IRD_page1_TV));
+            showDafPage2TV = itemView.findViewById((R.id.IRD_page2_TV));
             
 
 
@@ -291,6 +293,8 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1.setOnClickListener(v -> chazaraClickListener(chazara1, 1));
             chazara2.setOnClickListener(v -> chazaraClickListener(chazara2, 2));
             chazara3.setOnClickListener(v -> chazaraClickListener(chazara3, 3));
+            showDafPage1TV.setOnClickListener(v -> mListener.showTheDaf(mDaf,1));
+            showDafPage2TV.setOnClickListener(v -> mListener.showTheDaf(mDaf,2));
 
         }
 
@@ -446,6 +450,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
 
     public interface listenerOneDafAdapter {
         void initSummaryLearning(String nameLearning , String pageLearned  , String totalLearning);
+        void showTheDaf(Daf daf, int page);
     }
 }
 
