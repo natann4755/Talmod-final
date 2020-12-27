@@ -263,6 +263,8 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
        private CheckBox chazara1;
        private CheckBox chazara2;
        private CheckBox chazara3;
+       private TextView showDafPage1TV;
+       private TextView showDafPage2TV;
        private Daf mDaf;
 
 
@@ -276,6 +278,8 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1 = itemView.findViewById((R.id.chazara_1_CB));
             chazara2 = itemView.findViewById((R.id.chazara_2_CB));
             chazara3 = itemView.findViewById((R.id.chazara_3_CB));
+            
+
 
             ifLearn.setOnClickListener(v -> {
                 inCancelingStudyCancelChazara();
@@ -287,6 +291,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1.setOnClickListener(v -> chazaraClickListener(chazara1, 1));
             chazara2.setOnClickListener(v -> chazaraClickListener(chazara2, 2));
             chazara3.setOnClickListener(v -> chazaraClickListener(chazara3, 3));
+
         }
 
         private void updateSummaryLearning() {
