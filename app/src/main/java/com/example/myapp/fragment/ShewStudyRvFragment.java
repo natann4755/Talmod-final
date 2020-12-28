@@ -222,7 +222,11 @@ public class ShewStudyRvFragment extends Fragment implements AllMasechtotAdapter
         binding.ShowTheDafWV.setVisibility(View.VISIBLE);
         binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
 //
-        binding.ShowTheDafWV.loadUrl("https://wiki.sheatufim.org.il/w/uploads/sheatufim/thumb/0/0d/%D7%9B%D7%91%D7%A8_%D7%AA%D7%A8%D7%9E%D7%AA%D7%99.pdf/page1-1200px-%D7%9B%D7%91%D7%A8_%D7%AA%D7%A8%D7%9E%D7%AA%D7%99.pdf.jpg");
+//        String pdf = "https://outorah.org/dafImage/Pesachim/19/0.pdf";
+//        binding.ShowTheDafWV.loadUrl("http://docs.google.com/gview?embedded=true&amp;url=" + pdf);
+        binding.ShowTheDafWV.loadUrl("https://outorah.org/");
+
+
     }
 
     @Override
