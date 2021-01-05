@@ -214,20 +214,21 @@ public class ShewStudyRvFragment extends Fragment implements AllMasechtotAdapter
 
     @Override
     public void showTheDaf(Daf daf, int page) {
-        initWebView();
+
+   //     initWebView();
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void initWebView() {
-        binding.ShowTheDafWV.setVisibility(View.VISIBLE);
-        binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
+  //  @SuppressLint("SetJavaScriptEnabled")
+   // private void initWebView() {
+    //    binding.ShowTheDafWV.setVisibility(View.VISIBLE);
+    //    binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
 //
 //        String pdf = "https://outorah.org/dafImage/Pesachim/19/0.pdf";
 //        binding.ShowTheDafWV.loadUrl("http://docs.google.com/gview?embedded=true&amp;url=" + pdf);
-        binding.ShowTheDafWV.loadUrl("https://outorah.org/");
+   //     binding.ShowTheDafWV.loadUrl("https://www.sefaria.org.il/Eruvin.2b.2?lang=he&with=all&lang2=he");
 
 
-    }
+   // }
 
     @Override
     public void nameMasechet(String nameMasechet) {
