@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,7 +18,11 @@ import com.example.myapp.databinding.ActivityMainBinding;
 import com.example.myapp.fragment.DeleteStudyFragment;
 import com.example.myapp.fragment.NumberOfRepetitionsProfileFragment;
 import com.example.myapp.fragment.ShewStudyRvFragment;
+import com.example.myapp.fragment.ShowDafFragment;
 import com.example.myapp.utils.Toast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,6 +147,37 @@ public class MainActivity extends AppCompatActivity  {
         if (currentFragment instanceof DeleteStudyFragment){
             fragmentManager.popBackStack();
         }
+    }
+
+    @Subscribe()
+    public void showDaf(Daf dafToShow) {
+        openFragment(ShowDafFragment.newInstance(dafToShow), ShewStudyRvFragment.TAG);
+    }
+
+
+
+      @SuppressLint("SetJavaScriptEnabled")
+     private void initWebView(Daf dafToShow) {
+//        binding.ShowTheDafWV.setVisibility(View.VISIBLE);
+//        binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
+//
+//        String pdf = "https://outorah.org/dafImage/Pesachim/19/0.pdf";
+//        binding.ShowTheDafWV.loadUrl("http://docs.google.com/gview?embedded=true&amp;url=" + pdf);
+//         binding.ShowTheDafWV.loadUrl("https://www.sefaria.org.il/Eruvin.2b.2?lang=he&with=all&lang2=he");
+
+
+     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
     }
 
 }

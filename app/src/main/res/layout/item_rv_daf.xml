@@ -48,7 +48,7 @@
 
 
             <TextView
-                android:id="@+id/IRD_page1_TV"
+                android:id="@+id/IRD_show_daf_TV"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="הצג"

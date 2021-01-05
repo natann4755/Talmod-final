@@ -15,6 +15,9 @@ import com.example.myapp.R;
 import com.example.myapp.dataBase.AppDataBase;
 import com.example.myapp.utils.ConvertIntToPage;
 import com.example.myapp.utils.UtilsCalender;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -263,8 +266,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
        private CheckBox chazara1;
        private CheckBox chazara2;
        private CheckBox chazara3;
-       private TextView showDafPage1TV;
-       private TextView showDafPage2TV;
+       private TextView showDafTV;
        private Daf mDaf;
 
 
@@ -278,7 +280,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1 = itemView.findViewById((R.id.chazara_1_CB));
             chazara2 = itemView.findViewById((R.id.chazara_2_CB));
             chazara3 = itemView.findViewById((R.id.chazara_3_CB));
-            showDafPage1TV = itemView.findViewById((R.id.IRD_page1_TV));
+            showDafTV = itemView.findViewById((R.id.IRD_show_daf_TV));
 
             
 
@@ -293,7 +295,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
             chazara1.setOnClickListener(v -> chazaraClickListener(chazara1, 1));
             chazara2.setOnClickListener(v -> chazaraClickListener(chazara2, 2));
             chazara3.setOnClickListener(v -> chazaraClickListener(chazara3, 3));
-            showDafPage1TV.setOnClickListener(v -> mListener.showTheDaf(mDaf,1));
+            showDafTV.setOnClickListener(v -> EventBus.getDefault().post(mDaf));
 
 
         }
@@ -450,7 +452,7 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
 
     public interface listenerOneDafAdapter {
         void initSummaryLearning(String nameLearning , String pageLearned  , String totalLearning);
-        void showTheDaf(Daf daf, int page);
+
     }
 }
 
