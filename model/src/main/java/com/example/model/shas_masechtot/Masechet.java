@@ -9,8 +9,6 @@ public class Masechet {
     @SerializedName("masechet")
     private String name;
 
-    @SerializedName("masechetEName")
-    private String nameE;
 
     private boolean isChecked = false;
 
