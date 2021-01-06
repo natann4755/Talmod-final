@@ -9,6 +9,9 @@ public class Masechet {
     @SerializedName("masechet")
     private String name;
 
+    @SerializedName("masechetEName")
+    private String nameE;
+
     private boolean isChecked = false;
 
     public Masechet(int pages, String name) {

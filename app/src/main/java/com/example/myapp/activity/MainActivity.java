@@ -151,22 +151,8 @@ public class MainActivity extends AppCompatActivity  {
 
     @Subscribe()
     public void showDaf(Daf dafToShow) {
-        openFragment(ShowDafFragment.newInstance(dafToShow), ShewStudyRvFragment.TAG);
+        openFragment(ShowDafFragment.newInstance(dafToShow), ShowDafFragment.TAG);
     }
-
-
-
-      @SuppressLint("SetJavaScriptEnabled")
-     private void initWebView(Daf dafToShow) {
-//        binding.ShowTheDafWV.setVisibility(View.VISIBLE);
-//        binding.ShowTheDafWV.getSettings().setJavaScriptEnabled(true);
-//
-//        String pdf = "https://outorah.org/dafImage/Pesachim/19/0.pdf";
-//        binding.ShowTheDafWV.loadUrl("http://docs.google.com/gview?embedded=true&amp;url=" + pdf);
-//         binding.ShowTheDafWV.loadUrl("https://www.sefaria.org.il/Eruvin.2b.2?lang=he&with=all&lang2=he");
-
-
-     }
 
     @Override
     protected void onPause() {
