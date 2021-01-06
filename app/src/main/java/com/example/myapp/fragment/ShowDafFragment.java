@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import com.example.model.Daf;
 import com.example.myapp.R;
 import com.example.myapp.databinding.FragmentShowDafBinding;
+import com.example.myapp.utils.ConvertNamesToEnglish;
 
 import java.util.Objects;
 
@@ -63,19 +64,19 @@ public class ShowDafFragment extends Fragment {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void ShowDaf(Daf mDafToShow) {
-       String path = createPath(mDafToShow);
-       binding.FSDWebViewWV.getSettings().setJavaScriptEnabled(true);
-       binding.FSDWebViewWV.loadUrl(path);
+        String path = createPath(mDafToShow);
+        binding.FSDWebViewWV.getSettings().setJavaScriptEnabled(true);
+        binding.FSDWebViewWV.loadUrl(path);
     }
 
     private String createPath(Daf mDafToShow) {
-        String path = BASIC_PATH;
-        if (mDafToShow.getMasechet().equals("ברכות")){
-            path += "Berakhot."+ mDafToShow.getPageNumber()+"a?lang=he";
-
-//               מידות  קינים   לטפל בשקלים!
-        }
-        return path;
+        //               מידות  קינים   לטפל בשקלים!
+        return BASIC_PATH +
+                ConvertNamesToEnglish.convertMasechetNamesToEnglish(mDafToShow.getMasechet())
+                + "."
+                + mDafToShow.getPageNumber()
+                + "a"
+                + "?lang=he";
     }
 
 

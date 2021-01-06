@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity  {
         if (currentFragment instanceof DeleteStudyFragment){
             fragmentManager.popBackStack();
         }
+        if (currentFragment instanceof ShowDafFragment){
+            fragmentManager.popBackStack();
+        }
     }
 
     @Subscribe()
