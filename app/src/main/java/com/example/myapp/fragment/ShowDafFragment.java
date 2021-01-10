@@ -11,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 import com.example.model.Daf;
 import com.example.myapp.R;
 import com.example.myapp.databinding.FragmentShowDafBinding;
 import com.example.myapp.utils.ConvertNamesToEnglish;
+import com.example.myapp.utils.ToastAndDialog;
 
 import java.util.Objects;
 
@@ -67,30 +70,56 @@ public class ShowDafFragment extends Fragment {
         String path = createPath(mDafToShow);
         binding.FSDWebViewWV.getSettings().setJavaScriptEnabled(true);
         binding.FSDWebViewWV.loadUrl(path);
+
+//        binding.FSDWebViewWV.loadUrl("http://daf-yomi.com/Data/UploadedFiles/DY_Page/735.pdf");
+
+
+        binding.FSDWebViewWV.setWebViewClient(new WebViewClient() {
+
+            public void onPageFinished(WebView view, String url) {
+                binding.FSDWebViewWV.setVisibility(View.VISIBLE);
+                binding.FSDProgressBarPB.setVisibility(View.GONE);
+
+            }
+        });
     }
 
     private String createPath(Daf mDafToShow) {
-        //               מידות  קינים   לטפל בשקלים!
-        return BASIC_PATH +
-                ConvertNamesToEnglish.convertMasechetNamesToEnglish(mDafToShow.getMasechet())
-                + "."
-                + mDafToShow.getPageNumber()
-                + "a"
-                + "?lang=he";
+        String pathMasechet = ConvertNamesToEnglish.convertMasechetNamesToEnglish(mDafToShow.getMasechet());
+        if (pathMasechet.equals("Shekalim") || pathMasechet.equals("Kinnim") || pathMasechet.equals("Middot")) {
+            return pathForShekalimKinnimMiddot(pathMasechet);
+        } else {
+            return BASIC_PATH +
+                    pathMasechet
+                    + "."
+                    + mDafToShow.getPageNumber()
+                    + "a"
+                    + "?lang=he";
+        }
     }
 
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void initWebView(Daf dafToShow) {
-//        binding.ShowTheDafWV.setVisibility(View.VISIBLE);
-//        binding.ShowTheDafWV.
-//
-//        String pdf = "https://outorah.org/dafImage/Pesachim/19/0.pdf";
-//        binding.ShowTheDafWV.loadUrl("http://docs.google.com/gview?embedded=true&amp;url=" + pdf);
-//         binding.ShowTheDafWV.loadUrl("https://www.sefaria.org.il/Eruvin.2b.2?lang=he&with=all&lang2=he");
 
+    private String pathForShekalimKinnimMiddot(String pathMasechet) {
+        switch (pathMasechet) {
+            case "Shekalim":
+                ToastAndDialog.dialog(getActivity(), getString(R.string.alert_text_for_skalim));
+                return BASIC_PATH
+                        + "Jerusalem_Talmud_Shekalim.1a"
+                        + "?lang=he";
 
+            case "Kinnim":
+            case "Middot":
+                ToastAndDialog.dialog(getActivity(), getString(R.string.alert_text_for_kinim_midot));
+                return BASIC_PATH
+                        + "Mishnah_" + pathMasechet+ ".1"
+                        + "?lang=he";
+
+            default:
+                return "";
+        }
     }
+
 
     private void initViews() {
         linearLayoutButtons = Objects.requireNonNull(getActivity()).findViewById(R.id.typeOfStudy_buttons_LL);

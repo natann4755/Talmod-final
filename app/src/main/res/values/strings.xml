@@ -35,4 +35,6 @@
     <string name="add_type_of_study">הוסף לימוד</string>
     <string name="remove">מחק</string>
     <string name="edit_profile">ערוך פרופיל</string>
+    <string name="alert_text_for_skalim">עקב שמסכת זו אין מקורה מהתלמוד בבלי אלא מן התלמוד ירושלמי אין ביכולתנו להציג את הדף של היום, תמיד תוצג תחילת המסכת. הינך מוזמן לגלול לדף של היום ולהתחיל ללמוד...</string>
+    <string name="alert_text_for_kinim_midot">עקב שמסכת זו אין מקורה מהתלמוד בבלי אלא מן המשניות אין ביכולתנו להציג את הדף של היום, תמיד תוצג תחילת המסכת. הינך מוזמן לגלול לדף של היום ולהתחיל ללמוד...</string>
 </resources>

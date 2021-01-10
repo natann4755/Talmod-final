@@ -16,12 +16,10 @@ import com.example.model.shas_masechtot.Seder;
 import com.example.myapp.R;
 import com.example.myapp.dataBase.AppDataBase;
 import com.example.myapp.databinding.ActivityProfileBinding;
-import com.example.myapp.fragment.DeleteStudyFragment;
 import com.example.myapp.fragment.NumberOfRepetitionsProfileFragment;
-import com.example.myapp.fragment.ShewStudyRvFragment;
 import com.example.myapp.fragment.TypeStudyProfileFragment;
 import com.example.myapp.utils.ConvertIntToPage;
-import com.example.myapp.utils.Toast;
+import com.example.myapp.utils.ToastAndDialog;
 import com.example.myapp.utils.UtilsCalender;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -179,7 +177,7 @@ public class ProfileActivity extends AppCompatActivity implements TypeStudyProfi
     @Override
     public void typeStudyOk() {
         if (mStringTypeOfStudy == null || mStringTypeOfStudy.isEmpty()) {
-            Toast.MyToast(this, getString(R.string.you_must_choose_type_of_study));
+            ToastAndDialog.toast(this, getString(R.string.you_must_choose_type_of_study));
         } else {
             openFragment(NumberOfRepetitionsProfileFragment.newInstance(), NumberOfRepetitionsProfileFragment.TAG);
         }

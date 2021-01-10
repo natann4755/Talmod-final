@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,16 +15,14 @@ import com.example.myapp.R;
 import com.example.myapp.dataBase.AppDataBase;
 import com.example.myapp.databinding.ActivityMainBinding;
 import com.example.myapp.fragment.DeleteStudyFragment;
-import com.example.myapp.fragment.NumberOfRepetitionsProfileFragment;
 import com.example.myapp.fragment.ShewStudyRvFragment;
 import com.example.myapp.fragment.ShowDafFragment;
-import com.example.myapp.utils.Toast;
+import com.example.myapp.utils.ToastAndDialog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.myapp.utils.StaticVariables.index1;
 import static com.example.myapp.utils.StaticVariables.index2;
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity  {
                 if (checkIfCanOpenTypeOfStudy()) {
                     startActivity(new Intent(this, ProfileActivity.class));
                 }else {
-                    Toast.MyToast(this,getString(R.string.more_than_thre_types_of_study));
+                    ToastAndDialog.toast(this,getString(R.string.more_than_thre_types_of_study));
                 }
                 return true;
             case R.id.delete_type_of_study_MENU_I:

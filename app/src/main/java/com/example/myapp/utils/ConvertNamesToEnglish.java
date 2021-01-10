@@ -86,7 +86,7 @@ public class ConvertNamesToEnglish {
                 return "Niddah";
 
             default:
-                return "no match";
+                return "";
         }
     }
 
