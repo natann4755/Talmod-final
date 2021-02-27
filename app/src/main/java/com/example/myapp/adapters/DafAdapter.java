@@ -370,18 +370,19 @@ public class DafAdapter extends RecyclerView.Adapter<DafAdapter.ViewHolder> {
         }
 
         private void updateChazaraListAndDB(int chazara) {
+            mDaf.setChazara(chazara);
             AppDataBase.getInstance(activity).daoLearning().updateNumOfChazara(chazara, mDaf.getIndexTypeOfStudy(),mDaf.getMasechet(), mDaf.getPageNumber());
-            updateListInChazara(chazara);
+//            updateListInChazara(chazara);
         }
 
-        private void updateListInChazara(int chazara) {
-            for (int i = 0; i <myListALLDaf.size() ; i++) {
-                if (myListALLDaf.get(i).getMasechet().equals(mDaf.getMasechet()) && myListALLDaf.get(i).getPageNumber() == mDaf.getPageNumber()){
-                    myListALLDaf.get(i).setChazara(chazara);
-                    return;
-                }
-            }
-        }
+//        private void updateListInChazara(int chazara) {
+//            for (int i = 0; i <myListALLDaf.size() ; i++) {
+//                if (myListALLDaf.get(i).getMasechet().equals(mDaf.getMasechet()) && myListALLDaf.get(i).getPageNumber() == mDaf.getPageNumber()){
+//                    myListALLDaf.get(i).setChazara(chazara);
+//                    return;
+//                }
+//            }
+//        }
 
         public void setHolder(Daf mDaf) {
             this.mDaf = mDaf;
